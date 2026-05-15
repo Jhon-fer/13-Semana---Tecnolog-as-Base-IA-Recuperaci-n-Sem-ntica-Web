@@ -37,7 +37,9 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 
 from langchain.chains import RetrievalQA
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyCNic2wA_MlLEF5B4Okmu_Zv4dT1hkK8uM"
+"""EDITAR EL API DE GOOGLE"""
+
+os.environ["GOOGLE_API_KEY"] = "TU_API_KEY_AQUI"
 
 uploaded = files.upload()
 
@@ -199,4 +201,12 @@ if __name__ == "__main__":
 
 !git add .
 !git commit -m "Descripción de mis nuevos cambios"
+!git push origin main
+
+# Este comando agrega el archivo del cuaderno y cualquier otro cambio pendiente
+!git add "*.py"
+!git add .
+
+!git commit -m "Agregando el cuaderno de Colab con la lógica del Chatbot"
+
 !git push origin main
