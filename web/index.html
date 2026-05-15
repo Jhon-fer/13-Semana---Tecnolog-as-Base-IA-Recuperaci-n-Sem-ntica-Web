@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot RAG | LangChain + ChromaDB + Gemini</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar izquierdo -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">🤖</div>
+                <div class="logo-text">
+                    <h2>Chatbot RAG</h2>
+                    <p>LangChain + ChromaDB</p>
+                </div>
+            </div>
+            
+            <div class="info-panel">
+                <div class="info-title">
+                    <span>📊</span> Estado del Sistema
+                </div>
+                <div class="info-item">
+                    <span class="info-label">LangChain:</span>
+                    <span class="info-value" id="status-langchain">⏳ Conectando...</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">ChromaDB:</span>
+                    <span class="info-value" id="status-chromadb">⏳ Conectando...</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Embeddings:</span>
+                    <span class="info-value" id="status-embeddings">✅ Activos</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Modelo IA:</span>
+                    <span class="info-value" id="status-model">Gemini 1.5 Flash</span>
+                </div>
+            </div>
+            
+            <div class="info-panel">
+                <div class="info-title">
+                    <span>📚</span> Tecnologías
+                </div>
+                <div class="tech-badge">LangChain</div>
+                <div class="tech-badge">ChromaDB</div>
+                <div class="tech-badge">Gemini API</div>
+                <div class="tech-badge">Búsqueda Semántica</div>
+                <div class="tech-badge">RAG</div>
+            </div>
+            
+            <button class="clear-btn" id="clearChat">
+                🗑️ Limpiar conversación
+            </button>
+        </aside>
+        
+        <!-- Área principal del chat -->
+        <main class="chat-main">
+            <div class="chat-header">
+                <h1>💬 Chatbot Inteligente con Documentos</h1>
+                <p>Responde preguntas basadas en tus PDF, TXT o DOCX usando búsqueda semántica</p>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        <div class="message-sender">Chatbot RAG</div>
+                        <div class="message-text">
+                            ¡Hola! 👋<br><br>
+                            Soy un chatbot basado en <strong>LangChain</strong> y <strong>ChromaDB</strong>.<br><br>
+                            He procesado los documentos que subiste al sistema. Utilizo <strong>búsqueda semántica</strong> 
+                            para encontrar la información más relevante y <strong>Gemini</strong> para generar respuestas precisas.<br><br>
+                            ¿Qué te gustaría saber sobre tus documentos? 📚
+                        </div>
+                        <div class="message-time">Ahora</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input-area">
+                <div class="input-container">
+                    <textarea 
+                        id="messageInput" 
+                        placeholder="Escribe tu pregunta aquí..." 
+                        rows="1"
+                        onkeydown="handleKeyPress(event)"
+                    ></textarea>
+                    <button id="sendButton" class="send-btn">
+                        <span>📤</span> Enviar
+                    </button>
+                </div>
+                <div class="input-footer">
+                    <div class="status-indicator">
+                        <span class="status-dot" id="statusDot"></span>
+                        <span id="statusText">Conectando al servidor...</span>
+                    </div>
+                    <div class="input-hint">
+                        Press Enter para enviar • Shift+Enter para nueva línea
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
